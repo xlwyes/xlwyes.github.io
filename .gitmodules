@@ -1,0 +1,3 @@
+[submodule "themes/hexo-mtics-resume"]
+	path = themes/hexo-mtics-resume
+	url = https://github.com/mtics/hexo-mtics-resume.git
