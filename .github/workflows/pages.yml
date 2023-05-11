@@ -26,11 +26,17 @@ jobs:
           key: ${{ runner.OS }}-npm-cache
           restore-keys: |
             ${{ runner.OS }}-npm-cache
-      - name: Install Dependencies
+      - name: Install Dependencies of index
         run: npm install
-      - name: Build
+      - name: Build index
         run: npm run build
-      - name: Deploy
+      - name: Install Dependencies of notes
+        run: npm install
+        working-directory: ./notes
+      - name: Build notes 
+        run: npm run build && mv public ../public/notes
+        working-directory: ./notes
+      - name: Deploy index
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
